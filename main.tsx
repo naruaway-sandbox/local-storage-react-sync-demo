@@ -24,7 +24,7 @@ const createUseLocalStorage = (key: string) => {
     getItem: () => localStorage.getItem(key),
   };
   return (): [string | null, (value: string) => void] => {
-    const value = useSyncExternalStore(subscribe, () => ls.getItem());
+    const value = useSyncExternalStore(subscribe, ls.getItem);
     return [value, ls.setItem];
   };
 };
